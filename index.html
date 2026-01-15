@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pagamento Completato</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f8f9fa;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      text-align: center;
+      color: #212529;
+    }
+    .container {
+      padding: 30px;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      max-width: 90%;
+    }
+    .check {
+      font-size: 64px;
+      color: #28a745;
+      margin-bottom: 20px;
+    }
+    h1 {
+      font-size: 24px;
+      margin: 0 0 16px;
+    }
+    p {
+      font-size: 16px;
+      color: #6c757d;
+      margin: 0 0 24px;
+    }
+    .countdown {
+      font-size: 14px;
+      color: #495057;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="check">✓</div>
+    <h1>Pagamento completato!</h1>
+    <p>Grazie per il tuo ordine.<br>Torno all'app tra <span id="timer">3</span> secondi...</p>
+    <div class="countdown">Puoi anche chiudere questa finestra manualmente.</div>
+  </div>
+
+  <script>
+    let seconds = 3;
+    const timerEl = document.getElementById('timer');
+
+    const countdown = setInterval(() => {
+      seconds--;
+      if (seconds >= 0) {
+        timerEl.textContent = seconds;
+      }
+      if (seconds <= 0) {
+        clearInterval(countdown);
+        window.close();
+      }
+    }, 1000);
+  </script>
+</body>
+</html>
