@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pagamento non riuscito</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f8f9fa;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      text-align: center;
+      color: #212529;
+    }
+    .container {
+      padding: 30px;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      max-width: 90%;
+    }
+    .error {
+      font-size: 64px;
+      color: #dc3545;
+      margin-bottom: 20px;
+    }
+    h1 {
+      font-size: 24px;
+      margin: 0 0 16px;
+    }
+    p {
+      font-size: 16px;
+      color: #6c757d;
+      margin: 0 0 24px;
+    }
+    .countdown {
+      font-size: 14px;
+      color: #495057;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="error">✕</div>
+    <h1>Pagamento non riuscito</h1>
+    <p>Qualcosa è andato storto.<br>Chiudo questa finestra tra <span id="timer">5</span> secondi...</p>
+    <div class="countdown">Puoi anche chiuderla manualmente.</div>
+  </div>
+
+  <script>
+    let seconds = 5;
+    const timerEl = document.getElementById('timer');
+
+    const countdown = setInterval(() => {
+      seconds--;
+      if (seconds >= 0) {
+        timerEl.textContent = seconds;
+      }
+      if (seconds <= 0) {
+        clearInterval(countdown);
+        // Prova a chiudere la finestra
+        window.close();
+        
+        // Fallback: se non si chiude, reindirizza all'app dopo 1 secondo
+        setTimeout(() => {
+          window.location.href = "https://bams-app.glideapp.io";
+        }, 1000);
+      }
+    }, 1000);
+  </script>
+</body>
+</html>
